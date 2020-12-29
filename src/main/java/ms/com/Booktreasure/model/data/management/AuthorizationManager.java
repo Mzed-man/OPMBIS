@@ -6,21 +6,16 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Account {
+public class AuthorizationManager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    /**
-     * 0 = transactional account
-     * 1 = administrative account
-     */
-    private int type;
-
-    private String userName;
     @Lob
-    private String password;
+    private String token;
+    @ManyToOne
+    private Account account;
 
     @CreationTimestamp
     private Date created;

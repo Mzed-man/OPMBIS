@@ -1,24 +1,24 @@
 package ms.com.Booktreasure.model.dimension.period.special;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import ms.com.Booktreasure.model.dimension.period.Day;
 import ms.com.Booktreasure.model.dimension.period.Month;
+import ms.com.Booktreasure.model.dimension.period.Year;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Week {
+public class Quarter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
-    private Month month;
+    private Year year;
 
-    @OneToMany(mappedBy = "week")
+    @OneToMany(mappedBy = "quarter")
     @JsonIgnore
-    private List<Day> days;
+    private List<Month> months;
 
 }
